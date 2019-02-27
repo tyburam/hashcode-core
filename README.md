@@ -6,7 +6,7 @@ Code written in C# (.Net core) for solving Google HashCode problems
 Scores  
   
 | File |  Score |  
-|------|--------|  
+|------|-------:|  
 | A    |     15 |  
 | B    |     35 |  
 | C    |  48246 |  

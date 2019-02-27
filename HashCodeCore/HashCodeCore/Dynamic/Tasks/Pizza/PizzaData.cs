@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 
-namespace dp_net.Dynamic.Tasks
+namespace HashCodeCore.Dynamic.Tasks.Pizza
 {
     public class PizzaData : IData
     {

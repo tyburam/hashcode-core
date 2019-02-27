@@ -1,4 +1,4 @@
-namespace dp_net.Dynamic
+namespace HashCodeCore.Dynamic
 {
     public interface IData
     {

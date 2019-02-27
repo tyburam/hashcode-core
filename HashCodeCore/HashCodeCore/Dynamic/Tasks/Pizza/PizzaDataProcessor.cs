@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace dp_net.Dynamic.Tasks
+namespace HashCodeCore.Dynamic.Tasks.Pizza
 {
     public class PizzaDataProcessor : IDataProcessor
     {

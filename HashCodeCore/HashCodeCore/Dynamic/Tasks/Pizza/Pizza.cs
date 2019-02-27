@@ -1,7 +1,6 @@
 using System;
-using dp_net.Dynamic.Tasks;
 
-namespace dp_net
+namespace HashCodeCore.Dynamic.Tasks.Pizza
 {
     public static class Pizza
     {

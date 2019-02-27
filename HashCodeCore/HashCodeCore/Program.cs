@@ -1,4 +1,5 @@
 ﻿using System;
+using HashCodeCore.Dynamic.Tasks.Pizza;
 
 namespace HashCodeCore
 {
@@ -7,6 +8,7 @@ namespace HashCodeCore
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Pizza.Run();
         }
     }
 }

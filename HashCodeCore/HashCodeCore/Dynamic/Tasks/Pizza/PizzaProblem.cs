@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace dp_net.Dynamic.Tasks
+namespace HashCodeCore.Dynamic.Tasks.Pizza
 {
     public class PizzaProblem : Problem
     {

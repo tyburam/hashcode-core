@@ -12,3 +12,6 @@ Scores
 | C    |  48246 |  
 | D    | 884972 |  
 | Total| 933268 |  
+  
+  
+## 2019 problem - photo slideshow

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -9,11 +10,14 @@ namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
         public Dictionary<string, int> Tags { get; private set; }
         public List<Slide> Slides { get; set; }
 
+        private Dictionary<int, int> TagsHist;
+
         public SlideshowData(string[] content)
         {
             Photos = new List<Photo>();
             Tags = new Dictionary<string, int>();
             Slides = new List<Slide>();
+            TagsHist = new Dictionary<int, int>();
             
             for (var i = 1; i < content.Length; i++)
             {
@@ -23,12 +27,23 @@ namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
                     if (!Tags.ContainsKey(tag))
                     {
                         Tags.Add(tag, Tags.Count);
+                        TagsHist.Add(Tags.Count - 1, 1);
                     }
                     Photos[i-1].ProcessedTags.Add(Tags[tag]);
+                    ++TagsHist[Tags[tag]];
                 }
             }
-            
-            
+
+            foreach (var p in Photos)
+            {
+                var scoring = 0;
+                foreach (var tag in p.ProcessedTags)
+                {
+                    scoring += TagsHist[tag];
+                }
+
+                p.TagsScore = scoring;
+            }
         }
         
         public string[] Stringify()
@@ -45,26 +60,8 @@ namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
 
         public void Sort()
         {
-            var sortedPhoto = new List<Photo>(Photos);
-            for (var i = 1; i < sortedPhoto.Count; i++)
-            {
-                var max = 0;
-                var maxInd = 0;
-                for (var j = i + 1; j < sortedPhoto.Count; j++)
-                {
-                    var factor = sortedPhoto[i].InterestFactor(sortedPhoto[j]);
-                    if (factor <= max) continue;
-                    max = factor;
-                    maxInd = j;
-                }
-
-                if (i + 1 >= sortedPhoto.Count) continue;
-                var tmp = sortedPhoto[i + 1];
-                sortedPhoto[i + 1] = sortedPhoto[maxInd];
-                sortedPhoto[maxInd] = tmp;
-            }
-
-            Photos = sortedPhoto;
+            Photos.Sort((l, r) => l.CompareTo(r));
+            Photos.Reverse();
         }
     }
 }

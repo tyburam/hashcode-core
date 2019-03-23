@@ -16,10 +16,13 @@ namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
 
             foreach (var t in files)
             {
-                Console.WriteLine("Solving {0}", inputFolder + t);
+                Console.WriteLine("[{0}] Solving {1}", DateTime.Now, inputFolder + t);
                 var problem = new SlideshowProblem(inputFolder + t, new SlideshowDataProcessor());
+                Console.WriteLine("[{0}] Problem loaded", DateTime.Now);
                 problem.Solve();
+                Console.WriteLine("[{0}] Problem solved", DateTime.Now);
                 problem.Store(outputFolder + t);
+                Console.WriteLine("[{0}] Problem stored", DateTime.Now);
             }
         }
     }

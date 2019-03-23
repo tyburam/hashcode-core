@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
 {
-    public class Photo
+    public class Photo : IComparable<Photo>
     {
         public static readonly char Horizontal = 'H';
         public static readonly char Vertical = 'V';
@@ -13,6 +13,7 @@ namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
         public bool IsHorizontal { get; set; }
         public List<string> Tags { get; set; }
         public List<int> ProcessedTags { get; set; }
+        public int TagsScore { get; set; }
 
         public Photo(string[] data, int id)
         {
@@ -35,6 +36,11 @@ namespace HashCodeCore.Dynamic.Tasks.PhotoSlideshow
 
             var min = intersect <= only1 ? intersect : only1;
             return min <= only2 ? min : only2;
+        }
+
+        public int CompareTo(Photo other)
+        {
+            return TagsScore == other.TagsScore ? 0 : (TagsScore > other.TagsScore ? 1 : -1);
         }
     }
 }
